@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class control : MonoBehaviour {
-    int speed = 0;
+    float speed = 0f;
+    float ke = 0.96f;
 
 	// Use this for initialization
 	void Start () {
@@ -12,15 +13,16 @@ public class control : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             this.speed = 20;
-            for(float i = 0; i < speed; i += 0.001f)
-            {
-                transform.Rotate(0, 0, i);
-            }
             
         }
-		
-	}
+   
+        transform.Rotate(0, 0, speed);
+        this.speed *= ke;
+
+
+
+    }
 }
